@@ -1,0 +1,31 @@
+name: Update Parking Map
+
+# 只允許手動觸發，不設定排程
+on:
+  workflow_dispatch:
+
+jobs:
+  update_map:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas folium
+
+      - name: Run Python script to generate and upload map
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 你如果用 PAT token 可以這樣設定
+          # TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          python your_script.py
