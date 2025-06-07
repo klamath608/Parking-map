@@ -6,14 +6,17 @@ import time
 import json
 from datetime import datetime, timedelta, timezone
 from folium.plugins import LocateControl
+import os
 
 # 載入 secrets，假設你有方式在本地用 JSON 讀取
-with open("secrets.json") as f:
-    secrets = json.load(f)
+#with open("secrets.json") as f:
+#    secrets = json.load(f)
 
-GITHUB_USER = secrets["GITHUB_USER"]
-REPO_NAME = secrets["REPO_NAME"]
-TOKEN = secrets["TOKEN"]
+
+GITHUB_USER = os.environ["MY_GITHUB_USER"]
+REPO_NAME = os.environ["MY_REPO_NAME"]
+TOKEN = os.environ["GH_TOKEN"]
+
 FILE_NAME = "taichung_parking_map.html"
 GITHUB_API = f"https://api.github.com/repos/{GITHUB_USER}/{REPO_NAME}/contents/{FILE_NAME}"
 
