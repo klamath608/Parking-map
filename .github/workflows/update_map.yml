@@ -28,4 +28,4 @@ jobs:
           # 你如果用 PAT token 可以這樣設定
           # TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
         run: |
-          python your_script.py
+          python taichung_parking.py
