@@ -22,10 +22,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas folium
 
-      - name: Run Python script to generate and upload map
+      - name: Run Python script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # 你如果用 PAT token 可以這樣設定
-          # TOKEN: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
-        run: |
-          python taichung_parking.py
+          MY_GITHUB_USER: ${{ secrets.MY_GITHUB_USER }}
+          MY_REPO_NAME: ${{ secrets.MY_REPO_NAME }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python taichung_parking.py
+
